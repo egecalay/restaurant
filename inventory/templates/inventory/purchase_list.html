@@ -1,0 +1,31 @@
+{% extends './base.html'%}
+
+{% block content %}
+<h1>
+    All customer purchases listed:
+</h1>
+<table>
+    <tr>
+        <th>Day</th>
+        <th>Time</th>
+        <th>Menu Item Title</th>
+        <th>Menu Item Price</th>
+        <th>Quantity</th>
+        <th>Total</th>
+
+    </tr>
+    {% for purchase in purchase_list %}
+    <tr>
+        <td> {{purchase.day}} </td>
+        <td> {{purchase.time}} </td>
+        <td> {{purchase.menu_item.title}} </td>
+        <td> {{purchase.menu_item.price}} </td>
+        <td> {{purchase.quantity}} </td>
+        <td> {{purchase.quantity}} * {{purchase.menu_item.price}} </td>
+
+
+    </tr>
+    {% endfor %}
+
+</table>
+{% endblock %}
