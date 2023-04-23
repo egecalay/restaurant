@@ -1,0 +1,22 @@
+{% extends './base.html'%}
+
+{% block content %}
+<h1>
+    Today's menu:
+</h1>
+<a href="{% url 'menuitemcreate' %}"><button class="btn">Add Menu Item</button></a>
+
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Price</th>
+    </tr>
+    {% for menuitem in menuitem_list %}
+    <tr>
+        <td> {{menuitem.title}} </td>
+        <td> {{menuitem.price}} </td>
+    </tr>
+    {% endfor %}
+
+</table>
+{% endblock %}

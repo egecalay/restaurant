@@ -1,0 +1,41 @@
+{% extends './base.html'%}
+
+{% block content %}
+<h1>
+    All customer purchases listed:
+</h1>
+<a href="{% url 'purchasecreate' %}"><button class="btn">Place an order</button></a>
+
+
+<table>
+    <tr>
+        <th>Day</th>
+        <th>Time</th>
+        <th>Menu Item Title</th>
+        <th>Menu Item Price</th>
+        <th>Quantity</th>
+        <th>Total in EUR</th>
+
+    </tr>
+    
+
+    {% for purchase in purchase_list %}
+    <tr>
+        <td> {{purchase.day}} </td>
+        <td> {{purchase.time}} </td>
+        <td> {{purchase.menu_item.title}} </td>
+        <td> {{purchase.menu_item.price}} </td>
+        <td> {{purchase.quantity}} </td>
+        <td> {{purchase.sub_total}}</td>
+    </tr>
+    {% endfor %}
+    <tr>
+        <td colspan="5"></td>
+        <td>Total: {{revenue}}</td>
+    </tr>
+    
+    
+
+
+</table>
+{% endblock %}
