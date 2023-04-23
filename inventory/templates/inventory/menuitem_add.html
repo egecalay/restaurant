@@ -1,9 +1,9 @@
 <h1>
-    This page is for creating new ingredients
+    This page is for creating new menu items
 </h1>
 
 {% block content %}
-<h2>Create Ingredient</h2>
+<h2>Create Menu Item</h2>
 <form method="post">
 <div>
   {% csrf_token %} {{ form.as_p }}

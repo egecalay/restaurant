@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 class Ingredient(models.Model):
     quantity    =models.IntegerField()
@@ -20,10 +21,15 @@ class RecipeRequirement(models.Model):
     # add feeds or servings or yield fields
 
 class Purchase(models.Model):
-    day = models.DateField(auto_now=False, auto_now_add=False)
-    time = models.TimeField(auto_now=False, auto_now_add=False)
+    day         = models.DateField(auto_now=False, auto_now_add=False)
+    time        = models.TimeField(auto_now=False, auto_now_add=False)
     menu_item   = models.ForeignKey(MenuItem,on_delete=models.CASCADE)
     quantity    = models.DecimalField(decimal_places=2,max_digits=4)
+
+    def sub_total(self):
+        sub_total = self.menu_item.price * self.quantity
+        return round(sub_total,2)
+    
 
     #TODO- add date/time of the order
     #TODO- add User for the waiter/waitress with authentication
